@@ -4,3 +4,7 @@ html {
   color-scheme: light dark;
   font-family: system-ui;
 }
+
+body {
+  background-color: black;
+}

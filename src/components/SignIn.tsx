@@ -1,0 +1,62 @@
+import { RefObject, useRef, useState } from 'react';
+import { NavLink } from 'react-router';
+import { emailAndPhoneNumberValidator, passwordValidator } from '../utils/validate';
+
+const SignIn = () => {
+    const logo = new URL("../assets/header.png", import.meta.url).toString();
+    const bg = new URL(
+        "../assets/background-image.jpg",
+        import.meta.url
+    ).toString();
+
+    const [isEmailOrPhoneError, setIsEmailOrPhoneError] = useState(false);
+    const [isPasswordError, setIsPasswordError] = useState(false);
+    const email: string | RefObject<HTMLInputElement> = useRef(null as unknown as HTMLInputElement);
+    const password: string | RefObject<HTMLInputElement> = useRef(null as unknown as HTMLInputElement);
+
+    const signIn = () => {
+        if(emailAndPhoneNumberValidator(email.current.value)) setIsEmailOrPhoneError(false);
+        else setIsEmailOrPhoneError(true);
+
+        if(passwordValidator(password.current.value)) setIsPasswordError(false);
+        else setIsPasswordError(true)
+    }
+
+    return (
+        <>
+            <div style={{ backgroundImage: `url(${bg})` }} className="h-150 px-9 pt-2 w-full object-scale-down">
+                <img className="w-45" src={logo} alt="logo" />
+                <div className="text-white bg-black opacity-80 shadow-2xl w-2/6 p-12 m-auto rounded-sm">
+                    <h1 className="text-4xl font-bold my-6">Sign In</h1>
+                    <form onSubmit={(e) => e.preventDefault()} className='mb-12'>
+                        <div className='group relative mb-3'>
+                            <input required type="tel | email" id="emailOrMobile" className={'px-5 pt-4 h-16 w-full border-2 rounded-sm outline-0 peer ' + (isEmailOrPhoneError ? 'border-red-700' : 'border-neutral-400')} ref={email} />
+                            <label htmlFor="emailOrMobile" className='transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 group-focus-within:pt-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5 peer-valid:pt-0.5'>Email or mobile number</label>
+                        </div>
+                        <div className='group relative mb-3'>
+                            <input required type="password" id="password" className={'px-5 pt-4 h-16 w-full border-2 rounded-sm outline-0 peer ' + (isPasswordError ? 'border-red-700' : 'border-neutral-400' )} ref={password} />
+                            <label htmlFor="password" className='transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 group-focus-within:pt-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5 peer-valid:pt-0.5'>Password</label>
+                        </div>
+                        <button className='p-5 h-13 w-full bg-red-700 flex items-center justify-center rounded-sm shadow-xl outline-white outline-offset-2' onClick={signIn}>Sign In</button>
+                    </form>
+
+                    <p>New to Netflix? <NavLink to="/" className={ isActive => 'font-bold outline-white outline-offset-2 hover:underline hover:underline-offset-2' }>Sign up now.</NavLink></p>
+                </div>
+            </div>
+            <div className="w-7/10 my-9 m-auto">
+                <p className="ml-2 mb-5 text-white">Questions? Call <a className="underline outline-white outline-offset-2" href="tel:9821738442">9821738442</a></p>
+
+                <div className="text-gray-200 grid gap-2 grid-cols-4 m-2">
+                    <p>FAQ</p>
+                    <p>Cookie Preferences</p>
+                    <p>Help Centre</p>
+                    <p>Corporate Information</p>
+                    <p>Terms of Use</p>
+                    <p>Privacy</p>
+                </div>
+            </div>
+        </>
+    );
+}
+
+export default SignIn;
