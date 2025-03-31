@@ -30,21 +30,21 @@ const SignIn = () => {
                     <h1 className="text-4xl font-bold my-6">Sign In</h1>
                     <form onSubmit={(e) => e.preventDefault()} className='mb-12'>
                         <div className='group relative mb-3'>
-                            <input required type="tel | email" id="emailOrMobile" className={'px-5 pt-4 h-16 w-full border-2 rounded-sm outline-0 peer ' + (isEmailOrPhoneError ? 'border-red-700' : 'border-neutral-400')} ref={email} />
+                            <input required type="tel | email" id="emailOrMobile" className={'px-5 pt-4 h-16 w-full border-2 rounded-sm outline-0 peer ' + (isEmailOrPhoneError ? 'border-red-700' : 'border-neutral-400 focus:border-white') } ref={email} />
                             <label htmlFor="emailOrMobile" className='transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 group-focus-within:pt-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5 peer-valid:pt-0.5'>Email or mobile number</label>
                         </div>
                         <div className='group relative mb-3'>
-                            <input required type="password" id="password" className={'px-5 pt-4 h-16 w-full border-2 rounded-sm outline-0 peer ' + (isPasswordError ? 'border-red-700' : 'border-neutral-400' )} ref={password} />
+                            <input required type="password" id="password" className={'px-5 pt-4 h-16 w-full border-2 rounded-sm outline-0 peer ' + (isPasswordError ? 'border-red-700' : 'border-neutral-400 focus:border-white' )} ref={password} />
                             <label htmlFor="password" className='transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 group-focus-within:pt-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5 peer-valid:pt-0.5'>Password</label>
                         </div>
-                        <button className='p-5 h-13 w-full bg-red-700 flex items-center justify-center rounded-sm shadow-xl outline-white outline-offset-2' onClick={signIn}>Sign In</button>
+                        <button className='p-5 h-13 w-full bg-red-700 flex items-center justify-center rounded-sm shadow-xl focus:outline-2 outline-white outline-offset-2' onClick={signIn}>Sign In</button>
                     </form>
 
-                    <p>New to Netflix? <NavLink to="/" className={ isActive => 'font-bold outline-white outline-offset-2 hover:underline hover:underline-offset-2' }>Sign up now.</NavLink></p>
+                    <p>New to Netflix? <NavLink to="/" tabIndex={0} className={ isActive => 'font-bold focus:outline-2 outline-white outline-offset-2 hover:underline hover:underline-offset-2'}>Sign up now.</NavLink></p>
                 </div>
             </div>
             <div className="w-7/10 my-9 m-auto">
-                <p className="ml-2 mb-5 text-white">Questions? Call <a className="underline outline-white outline-offset-2" href="tel:9821738442">9821738442</a></p>
+                <p className="ml-2 mb-5 text-white">Questions? Call <a tabIndex={0} className="focus:underline focus:outline-0" href="tel:9821738442">9821738442</a></p>
 
                 <div className="text-gray-200 grid gap-2 grid-cols-4 m-2">
                     <p>FAQ</p>

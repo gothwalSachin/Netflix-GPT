@@ -48,10 +48,10 @@ const Register = () => {
 
 					<form onSubmit={(e) => e.preventDefault()} className="flex text-white m-9 justify-center items-center">
 						<div className="group relative mr-4">
-							<input required type="email" id="email-first" className={"bg-neutral-500 rounded-full w-80 pt-4 px-5 peer h-16 " + (isErrorOnRegister1 ? 'outline-2 outline-red-700' : 'outline-white')} ref={email1} />
+							<input required type="email" id="email-first" className={"bg-neutral-500 rounded-full w-80 pt-4 px-5 peer h-16 outline-offset-2 " + (isErrorOnRegister1 ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={email1} />
 							<label htmlFor="email-first" className="transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">Email Address</label>
 						</div>
-						<button className="bg-red-700 outline-white outline-offset-2 px-12 py-4 rounded-full text-2xl font-semibold" onClick={registerFirst}>Get Started</button>
+						<button className="bg-red-700 focus:outline-2 outline-white outline-offset-2 px-12 py-4 rounded-full text-2xl font-semibold" onClick={registerFirst}>Get Started</button>
 					</form>
 				</div>
 			</div>
@@ -68,10 +68,10 @@ const Register = () => {
 				</h4>
 				<form onSubmit={(e) => e.preventDefault()} className="flex text-white justify-center items-center">
 					<div className="group relative mr-4">
-						<input required type="email" id="email-second" className={"bg-neutral-500 rounded-full w-80 pt-4 px-5 h-16 peer " + (isErrorOnRegister2 ? 'outline-2 outline-red-700' : 'outline-white')} ref={email2} />
+						<input required type="email" id="email-second" className={"bg-neutral-500 rounded-full w-80 pt-4 px-5 h-16 peer outline-offset-2 " + (isErrorOnRegister2 ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={email2} />
 						<label htmlFor="email-first" className="transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">Email Address</label>
 					</div>
-					<button type="submit" id="email-second" className="bg-red-700 outline-white outline-offset-2 px-12 py-4 rounded-full text-2xl font-semibold" onClick={registerSecond}>Get Started</button>
+					<button type="submit" id="email-second" className="bg-red-700 focus:outline-2 outline-white outline-offset-2 px-12 py-4 rounded-full text-2xl font-semibold" onClick={registerSecond}>Get Started</button>
 				</form>
 			</div>
 
