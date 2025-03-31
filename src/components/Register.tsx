@@ -1,9 +1,9 @@
 import { RefObject, useRef, useState } from "react";
 import Footer from "./Footer";
-import FreqAQ from "./FreqAQ";
 import Header from "./Header";
 import { emailAndPhoneNumberValidator } from "../utils/validate";
 import { FAQ } from "../utils/FAQ";
+import FAQues from "./FAQues";
 
 const Register = () => {
 	const bg = new URL(
@@ -11,7 +11,6 @@ const Register = () => {
 		import.meta.url
 	).toString();
 
-	const [openFAQ, setOpenFAQ] = useState(-1);
 	const [isErrorOnRegister1, setIsErrorOnRegister1] = useState(false);
 	const [isErrorOnRegister2, setIsErrorOnRegister2] = useState(false);
 	const email1: string | RefObject<HTMLInputElement> = useRef(null as unknown as HTMLInputElement);
@@ -58,7 +57,7 @@ const Register = () => {
 
 			<div className="my-8 m-auto w-95/100">
 				<h2 className="text-4xl my-6 text-white font-extrabold">Frequently Asked Questions</h2>
-				{FAQ.map((faq, index) => <FreqAQ key={index} faq={faq} isOpen={index === openFAQ} setIsOpen={() => index === openFAQ ? setOpenFAQ(-1) : setOpenFAQ(index)} />)}
+				<FAQues />
 			</div>
 
 			<div className="w-2/3 m-auto my-8">

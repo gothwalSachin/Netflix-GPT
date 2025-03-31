@@ -1,4 +1,4 @@
-const FreqAQ = (props: any) => {
+const FAQuesItem = (props: any) => {
     const { faq, isOpen, setIsOpen } = props;
     return (
         <>
@@ -12,4 +12,4 @@ const FreqAQ = (props: any) => {
     );
 }
 
-export default FreqAQ;
+export default FAQuesItem;
