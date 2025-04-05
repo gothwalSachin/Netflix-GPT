@@ -1,18 +1,19 @@
 import { RefObject, useRef, useState } from "react";
 import { emailAndPhoneNumberValidator, passwordValidator } from "../utils/validate";
-import { UserCredential, createUserWithEmailAndPassword } from "firebase/auth";
+import { UserCredential, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useNavigate } from 'react-router';
 import Footer from "./Footer";
 import Header from "./Header";
 import FAQues from "./FAQues";
-import { auth } from "../utils/firebase"
-
+import { auth } from "../utils/firebase";
 
 const Register = () => {
 	const bg = new URL(
 		"../assets/background-image.jpg",
 		import.meta.url
 	).toString();
-
+	
+	const navigate = useNavigate();
 	const [errorMessage1, setErrorMessage1] = useState("");
 	const [errorMessage2, setErrorMessage2] = useState("");
 	const [message, setMessage] = useState("");
@@ -24,16 +25,22 @@ const Register = () => {
 
 	const register = async (email: string, password: string) => {
 		try {
-			await createUserWithEmailAndPassword(auth, email, password).then((value: UserCredential) => {
-				// console.log(value);
-				setMessage("");
+			await createUserWithEmailAndPassword(auth, email, password).then((userCredential: UserCredential) => {
+				const user = userCredential.user; 
+				updateProfile(user, {
+				}).then(() => {
+					setMessage("");
+					navigate("/browse");
+				}).catch((error) => {
+					setMessage(error.code);
+				});
 			}).catch((error) => {
 				if (error.code === 'auth/email-already-in-use') setMessage("User Exists!!!");
 				else setMessage(error.code)
 			})
-
+			
 		} catch (error) {
-			// console.log(error)
+			setMessage(error as string);
 		}
 	}
 
@@ -89,10 +96,10 @@ const Register = () => {
 
 					<form onSubmit={(e) => e.preventDefault()} className="flex text-white m-6 justify-center items-center">
 						<div className="group relative flex">
-							<input required type="email" id="email-first" className={"bg-neutral-500 mr-2 rounded-full w-80 pt-4 px-5 peer h-16 outline-offset-2 " + ((errorMessage1 === "Invalid email address") ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={email1} />
+							<input required type="email" id="email-first" name="email-first" className={"bg-neutral-500 mr-2 rounded-full w-80 pt-4 px-5 peer h-16 outline-offset-2 " + ((errorMessage1 === "Invalid email address") ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={email1} />
 							<label htmlFor="email-first" className="transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">Email address</label>
 
-							<input required type="password" id="password-first" className={"bg-neutral-500 mr-2 rounded-full w-80 pt-4 px-5 peer h-16 outline-offset-2 " + ((errorMessage1 === "Invalid password") ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={password1} />
+							<input required type="password" id="password-first" name="password-first" className={"bg-neutral-500 mr-2 rounded-full w-80 pt-4 px-5 peer h-16 outline-offset-2 " + ((errorMessage1 === "Invalid password") ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={password1} />
 							<label htmlFor="password-first" className="transform transition-all absolute pl-5 top-0 left-82 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">Password</label>
 
 							<button className="bg-red-700 focus:outline-2 outline-white outline-offset-2 px-12 py-4 rounded-full text-2xl font-semibold" onClick={registerFirst}>Get Started</button>
@@ -114,10 +121,10 @@ const Register = () => {
 				</h4>
 				<form onSubmit={(e) => e.preventDefault()} className="flex m-6 text-white justify-center items-center">
 					<div className="group relative flex">
-						<input required type="email" id="email-second" className={"bg-neutral-500 mr-2 rounded-full w-80 pt-4 px-5 h-16 peer outline-offset-2 " + ((errorMessage2 === "Invalid email address") ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={email2} />
+						<input required type="email" name="email-second" id="email-second" className={"bg-neutral-500 mr-2 rounded-full w-80 pt-4 px-5 h-16 peer outline-offset-2 " + ((errorMessage2 === "Invalid email address") ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={email2} />
 						<label htmlFor="email-second" className="transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">Email address</label>
 
-						<input required type="password" id="password-second" className={"bg-neutral-500 mr-2 rounded-full w-80 pt-4 px-5 h-16 peer outline-offset-2 " + ((errorMessage2 === "Invalid password") ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={password2} />
+						<input required type="password" name="password-second" id="password-second" className={"bg-neutral-500 mr-2 rounded-full w-80 pt-4 px-5 h-16 peer outline-offset-2 " + ((errorMessage2 === "Invalid password") ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={password2} />
 						<label htmlFor="email-second" className="transform transition-all absolute pl-5 top-0 left-82 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">Password</label>
 
 						<button className="bg-red-700 focus:outline-2 outline-white outline-offset-2 px-12 py-4 rounded-full text-2xl font-semibold" onClick={registerSecond}>Get Started</button>
