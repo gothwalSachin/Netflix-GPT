@@ -7,7 +7,7 @@
     "build": "parcel build"
   },
   "dependencies": {
-    "firebase": "^11.5.0",
+    "firebase": "^11.6.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

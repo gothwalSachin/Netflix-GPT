@@ -16,6 +16,10 @@ const Body = () => {
         {
             path: '/login',
             Component: SignIn
+        },
+        {
+            path: '/browse',
+            Component: Browse
         }
     ])
 

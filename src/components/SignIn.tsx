@@ -1,6 +1,8 @@
 import { RefObject, useRef, useState } from 'react';
 import { NavLink } from 'react-router';
 import { emailAndPhoneNumberValidator, passwordValidator } from '../utils/validate';
+import { signInWithEmailAndPassword, UserCredential } from 'firebase/auth';
+import { auth } from '../utils/firebase';
 
 const SignIn = () => {
     const logo = new URL("../assets/header.png", import.meta.url).toString();
@@ -14,12 +16,27 @@ const SignIn = () => {
     const email: string | RefObject<HTMLInputElement> = useRef(null as unknown as HTMLInputElement);
     const password: string | RefObject<HTMLInputElement> = useRef(null as unknown as HTMLInputElement);
 
-    const signIn = () => {
-        if(emailAndPhoneNumberValidator(email.current.value)) setIsEmailOrPhoneError(false);
-        else setIsEmailOrPhoneError(true);
-
-        if(passwordValidator(password.current.value)) setIsPasswordError(false);
-        else setIsPasswordError(true)
+    const signIn = async () => {
+        if(!emailAndPhoneNumberValidator(email.current.value)) {
+            setIsEmailOrPhoneError(true);
+            return;
+        }
+        if(!passwordValidator(password.current.value)) {
+            setIsPasswordError(true);
+            return;
+        }
+        
+        setIsPasswordError(false);
+        setIsEmailOrPhoneError(false);
+        try {
+            await signInWithEmailAndPassword(auth, email.current.value, password.current.value).then((value: UserCredential) => {
+                // console.log(value);
+            }).catch((error) => {
+                // console.log(error);
+            })
+        } catch (error) {
+            // console.log(error);
+        }
     }
 
     return (
