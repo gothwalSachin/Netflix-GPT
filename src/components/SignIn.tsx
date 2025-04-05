@@ -36,6 +36,7 @@ const SignIn = () => {
             // console.log(value);
         }).catch((error) => {
             if (error.code === 'auth/invalid-credential') setMessage("Invalid credentials!");
+            else setMessage(error.code)
             console.log(error);
         })
     }

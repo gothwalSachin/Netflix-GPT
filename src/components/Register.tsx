@@ -28,9 +28,8 @@ const Register = () => {
 				// console.log(value);
 				setMessage("");
 			}).catch((error) => {
-				if (error.code === 'auth/email-already-in-use') {
-					setMessage("User Exists!!!");
-				}
+				if (error.code === 'auth/email-already-in-use') setMessage("User Exists!!!");
+				else setMessage(error.code)
 			})
 
 		} catch (error) {
