@@ -3,9 +3,9 @@ import { NavLink, useNavigate } from 'react-router';
 import { emailAndPhoneNumberValidator, passwordValidator } from '../utils/validate';
 import { signInWithEmailAndPassword, UserCredential } from 'firebase/auth';
 import { auth } from '../utils/firebase';
+import Header from './Header';
 
 const SignIn = () => {
-    const navigate = useNavigate();
     const logo = new URL("../assets/header.png", import.meta.url).toString();
     const bg = new URL(
         "../assets/background-image.jpg",
@@ -31,7 +31,6 @@ const SignIn = () => {
         setErrorMessage("");
 
         await signInWithEmailAndPassword(auth, email.current.value, password.current.value).then((userCredential: UserCredential) => {
-            navigate("/browse")
         }).catch((error) => {
             if (error.code === 'auth/invalid-credential') setMessage("Invalid credentials!");
             else setMessage(error.code)
@@ -40,8 +39,9 @@ const SignIn = () => {
 
     return (
         <>
-            <div style={{ backgroundImage: `url(${bg})` }} className="h-150 px-9 pt-2 w-full object-scale-down">
-                <img className="w-45" src={logo} alt="logo" />
+            <Header />
+            <div style={{ backgroundImage: `url(${bg})` }} className="h-150 px-9 pt-2 w-95/100 m-auto rounded-xl object-scale-down">
+                {/* <img className="w-45" src={logo} alt="logo" /> */}
                 <div className="text-white bg-black opacity-80 shadow-2xl w-2/6 p-12 m-auto rounded-sm">
                     <h1 className="text-4xl font-bold my-6">Sign In</h1>
                     <form onSubmit={(e) => e.preventDefault()}>

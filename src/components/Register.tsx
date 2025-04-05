@@ -1,7 +1,6 @@
 import { RefObject, useRef, useState } from "react";
 import { emailAndPhoneNumberValidator, passwordValidator } from "../utils/validate";
 import { UserCredential, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useNavigate } from 'react-router';
 import Footer from "./Footer";
 import Header from "./Header";
 import FAQues from "./FAQues";
@@ -13,7 +12,6 @@ const Register = () => {
 		import.meta.url
 	).toString();
 	
-	const navigate = useNavigate();
 	const [errorMessage1, setErrorMessage1] = useState("");
 	const [errorMessage2, setErrorMessage2] = useState("");
 	const [message, setMessage] = useState("");
@@ -30,7 +28,6 @@ const Register = () => {
 				updateProfile(user, {
 				}).then(() => {
 					setMessage("");
-					navigate("/browse");
 				}).catch((error) => {
 					setMessage(error.code);
 				});
