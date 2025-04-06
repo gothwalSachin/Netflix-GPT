@@ -5,6 +5,7 @@ import SecondaryContainer from "./SecondaryContainer";
 import usePopularMovies from "../customHooks/usePopularMovies";
 import useTopRatedMovies from "../customHooks/useTopRatedMovies";
 import useUpcomingMovies from "../customHooks/useUpcomingMovies";
+import Footer from "./Footer";
 
 const Browse = () => {
     useNowPlayingMovies();
@@ -17,6 +18,7 @@ const Browse = () => {
             <Header />
             <MainContainer />
             <SecondaryContainer />
+            <Footer />
         </>
     );
 }
