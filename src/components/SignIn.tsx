@@ -56,7 +56,7 @@ const SignIn = () => {
 
                     <div className={(errorMessage.length !== 0 || message.length !== 0) ? "text-white p-2 m-auto mt-4 rounded-full text-center bg-red-500" : "hidden"}>{errorMessage || message}</div>
 
-                    <p className='mt-9'>New to Netflix? <NavLink to="/" tabIndex={0} className={ isActive => 'font-bold focus:outline-2 outline-white outline-offset-2 hover:underline hover:underline-offset-2'}>Sign up now.</NavLink></p>
+                    <p className='mt-9'>New to Netflix? <NavLink to="/" tabIndex={0} className={ isActive => 'font-bold focus:outline-2 outline-white outline-offset-2 hover:underline focus:underline hover:underline-offset-2'}>Sign up now.</NavLink></p>
                 </div>
             </div>
             <div className="w-7/10 my-9 m-auto">
