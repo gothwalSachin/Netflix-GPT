@@ -35,8 +35,8 @@ const Header = () => {
     }, []);
 
     return (
-        <div className="w-full absolute z-10 px-9 flex justify-between items-center">
-            <img className="w-52" src={logo} alt="logo" />
+        <div className={"w-screen z-10 px-9 flex justify-between items-center" + (user === null ? "" : " absolute")}>
+            <img className="w-56" src={logo} alt="logo" />
             {
                 user ? (<button onClick={handleSignOut} tabIndex={0} className='text-sm text-black font-semibold cursor-pointer bg-white focus:outline-2 outline-white outline-offset-2 h-min px-4 py-1.5 rounded-full'>Sign out</button>) :
                     (url.pathname === '/login'  ? <div></div> : <NavLink to="./login" tabIndex={0} className='text-sm text-black font-semibold cursor-pointer bg-white focus:outline-2 outline-white outline-offset-2 h-min px-4 py-1.5 rounded-full'>Sign In</NavLink>)
