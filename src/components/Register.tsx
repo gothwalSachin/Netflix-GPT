@@ -5,9 +5,12 @@ import Footer from "./Footer";
 import Header from "./Header";
 import FAQues from "./FAQues";
 import { auth } from "../utils/firebase";
-import { BG_IMAGE } from "../utils/constants";
 
 const Register = () => {
+	const BG_IMAGE = new URL(
+		"../assets/background-image.jpg",
+		import.meta.url
+	).toString();
 	const [errorMessage1, setErrorMessage1] = useState("");
 	const [errorMessage2, setErrorMessage2] = useState("");
 	const [message, setMessage] = useState("");

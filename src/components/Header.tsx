@@ -4,9 +4,9 @@ import { NavLink, useLocation, useNavigate } from "react-router";
 import { auth } from "../utils/firebase";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
-import { HEADER_LOGO } from "../utils/constants";
 
 const Header = () => {
+    const HEADER_LOGO = new URL("../assets/header.png", import.meta.url).toString();
     const navigate = useNavigate();
     const user = useSelector((store: any) => store.user);
     const dispatch = useDispatch();
