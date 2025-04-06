@@ -5,13 +5,9 @@ import Footer from "./Footer";
 import Header from "./Header";
 import FAQues from "./FAQues";
 import { auth } from "../utils/firebase";
+import { BG_IMAGE } from "../utils/constants";
 
 const Register = () => {
-	const bg = new URL(
-		"../assets/background-image.jpg",
-		import.meta.url
-	).toString();
-	
 	const [errorMessage1, setErrorMessage1] = useState("");
 	const [errorMessage2, setErrorMessage2] = useState("");
 	const [message, setMessage] = useState("");
@@ -76,7 +72,7 @@ const Register = () => {
 			<Header />
 
 			<div
-				style={{ backgroundImage: `url(${bg})` }}
+				style={{ backgroundImage: `url(${BG_IMAGE})` }}
 				className="w-95/100 h-2/3 rounded-xl m-auto object-scale-down shadow-2xl"
 			>
 				<div className="w-6xl text-center m-auto p-15">

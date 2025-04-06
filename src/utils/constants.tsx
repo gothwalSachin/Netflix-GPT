@@ -7,3 +7,10 @@ export const API_OPTIONS = {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYWUzNzE0YjQyM2FkYWVkZTA3MTQ0ZDc1NWE4N2JhZCIsIm5iZiI6MTc0Mzg3NjExMC42NjYsInN1YiI6IjY3ZjE3MDBlY2JkNTViNjYxZmQ5N2UyYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nGX3GVnX1MQV0ga_Mox2tbZwaRRJ-EHwddZxHsbpln4'
     }
 };
+
+export const HEADER_LOGO = new URL("../assets/header.png", import.meta.url).toString();
+
+export const BG_IMAGE = new URL(
+        "../assets/background-image.jpg",
+        import.meta.url
+    ).toString();
