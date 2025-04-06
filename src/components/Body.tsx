@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, useNavigate } from 'react-router';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 import Browse from './Browse';
 import Register from './Register';
 import SignIn from './SignIn';
@@ -8,7 +8,8 @@ const Body = () => {
     const appRouter = createBrowserRouter([
         {
             path: '/',
-            Component: Register
+            Component: Register,
+            ErrorBoundary: Error
         },
         {
             path: '/browse',

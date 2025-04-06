@@ -5,12 +5,15 @@ import Footer from "./Footer";
 import Header from "./Header";
 import FAQues from "./FAQues";
 import { auth } from "../utils/firebase";
+import { useSelector } from "react-redux";
+import { LANGUAGE_TRANSLATIONS } from "../utils/i18n";
 
 const Register = () => {
 	const BG_IMAGE = new URL(
 		"../assets/background-image.jpg",
 		import.meta.url
 	).toString();
+	const langCode = useSelector((store: any) => store.config.lang);
 	const [errorMessage1, setErrorMessage1] = useState("");
 	const [errorMessage2, setErrorMessage2] = useState("");
 	const [message, setMessage] = useState("");
@@ -79,26 +82,19 @@ const Register = () => {
 				className="w-95/100 h-2/3 rounded-xl m-auto object-scale-down shadow-2xl"
 			>
 				<div className="w-6xl text-center m-auto p-15">
-					<h1 className="text-white text-7xl font-extrabold mb-12">
-						Unlimited movies, TV shows and more
-					</h1>
-					<h3 className="text-white text-2xl font-medium mb-8">
-						Starts at ₹149. Cancel at any time.
-					</h3>
-					<h4 className="text-white text-base font-medium">
-						Ready to watch? Enter your email to create or restart your
-						membership.
-					</h4>
+					<h1 className="text-white text-7xl font-extrabold mb-12">{LANGUAGE_TRANSLATIONS[langCode].UnlimitedMovies}</h1>
+					<h3 className="text-white text-2xl font-medium mb-8">{LANGUAGE_TRANSLATIONS[langCode].StartsAt}</h3>
+					<h4 className="text-white text-base font-medium">{LANGUAGE_TRANSLATIONS[langCode].ReadyToWatch}</h4>
 
 					<form onSubmit={(e) => e.preventDefault()} className="flex text-white m-6 justify-center items-center">
 						<div className="group relative flex">
 							<input required type="email" id="email-first" name="email-first" className={"bg-neutral-500 mr-2 rounded-full w-80 pt-4 px-5 peer h-16 outline-offset-2 " + ((errorMessage1 === "Invalid email address") ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={email1} />
-							<label htmlFor="email-first" className="transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">Email address</label>
+							<label htmlFor="email-first" className="transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">{LANGUAGE_TRANSLATIONS[langCode].Email}</label>
 
 							<input required type="password" id="password-first" name="password-first" className={"bg-neutral-500 mr-2 rounded-full w-80 pt-4 px-5 peer h-16 outline-offset-2 " + ((errorMessage1 === "Invalid password") ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={password1} />
-							<label htmlFor="password-first" className="transform transition-all absolute pl-5 top-0 left-82 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">Password</label>
+							<label htmlFor="password-first" className="transform transition-all absolute pl-5 top-0 left-82 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">{LANGUAGE_TRANSLATIONS[langCode].Password}</label>
 
-							<button className="bg-red-700 focus:outline-2 outline-white outline-offset-2 px-12 py-4 rounded-full text-2xl font-semibold" onClick={registerFirst}>Get Started</button>
+							<button className="bg-red-700 focus:outline-2 outline-white outline-offset-2 px-12 py-4 rounded-full text-2xl font-semibold active:scale-95" onClick={registerFirst}>{LANGUAGE_TRANSLATIONS[langCode].GetStarted}</button>
 						</div>
 					</form>
 					<div className={(errorMessage1.length !== 0 || message.length !== 0) ? "text-white w-4xl p-2 m-auto rounded-full text-center bg-red-500" : "hidden"}>{errorMessage1 || message}</div>
@@ -106,24 +102,21 @@ const Register = () => {
 			</div>
 
 			<div className="my-8 m-auto w-95/100">
-				<h2 className="text-4xl my-6 text-white font-extrabold">Frequently Asked Questions</h2>
+				<h2 className="text-4xl my-6 text-white font-extrabold">{LANGUAGE_TRANSLATIONS[langCode].Freq}</h2>
 				<FAQues />
 			</div>
 
 			<div className="w-2/3 m-auto my-8">
-				<h4 className="text-white text-base text-center font-medium mt-6 mb-3">
-					Ready to watch? Enter your email to create or restart your
-					membership.
-				</h4>
+				<h4 className="text-white text-base text-center font-medium mt-6 mb-3">{LANGUAGE_TRANSLATIONS[langCode].ReadyToWatch}</h4>
 				<form onSubmit={(e) => e.preventDefault()} className="flex m-6 text-white justify-center items-center">
 					<div className="group relative flex">
 						<input required type="email" name="email-second" id="email-second" className={"bg-neutral-500 mr-2 rounded-full w-80 pt-4 px-5 h-16 peer outline-offset-2 " + ((errorMessage2 === "Invalid email address") ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={email2} />
-						<label htmlFor="email-second" className="transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">Email address</label>
+						<label htmlFor="email-second" className="transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">{LANGUAGE_TRANSLATIONS[langCode].Email}</label>
 
 						<input required type="password" name="password-second" id="password-second" className={"bg-neutral-500 mr-2 rounded-full w-80 pt-4 px-5 h-16 peer outline-offset-2 " + ((errorMessage2 === "Invalid password") ? 'outline-2 outline-red-700' : 'focus:outline-2 outline-white')} ref={password2} />
-						<label htmlFor="email-second" className="transform transition-all absolute pl-5 top-0 left-82 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">Password</label>
+						<label htmlFor="email-second" className="transform transition-all absolute pl-5 top-0 left-82 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5">{LANGUAGE_TRANSLATIONS[langCode].Password}</label>
 
-						<button className="bg-red-700 focus:outline-2 outline-white outline-offset-2 px-12 py-4 rounded-full text-2xl font-semibold" onClick={registerSecond}>Get Started</button>
+						<button className="bg-red-700 focus:outline-2 outline-white outline-offset-2 px-12 py-4 rounded-full text-2xl font-semibold active:scale-95" onClick={registerSecond}>{LANGUAGE_TRANSLATIONS[langCode].GetStarted}</button>
 					</div>
 				</form>
 				<div className={(errorMessage2.length !== 0 || message.length !== 0) ? "text-white w-4xl p-2 m-auto rounded-full text-center bg-red-500" : "hidden"}>{errorMessage2 || message}</div>

@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import MovieList from "./MovieList";
+import { LANGUAGE_TRANSLATIONS } from "../utils/i18n";
 
 const SecondaryContainer = () => {
     const movies = useSelector((store: any) => store?.movies);
+    const langCode = useSelector((store: any) => store.config.lang);
     const nowPlayingMovies = movies?.nowPlayingMovies;
     const popularMovies = movies?.popularMovies;
     const topRatedMovies = movies?.topRatedMovies;
@@ -10,10 +12,10 @@ const SecondaryContainer = () => {
 
     return (
         <div className="relative z-30 -mt-36">
-            <MovieList title={"Now Playing"} movieList={nowPlayingMovies} />
-            <MovieList title={"Popular"} movieList={popularMovies} />
-            <MovieList title={"Top Rated"} movieList={topRatedMovies} />
-            <MovieList title={"Up Coming"} movieList={upcomingMovies} />
+            <MovieList title={LANGUAGE_TRANSLATIONS[langCode].NowPlaying} movieList={nowPlayingMovies} />
+            <MovieList title={LANGUAGE_TRANSLATIONS[langCode].Popular} movieList={popularMovies} />
+            <MovieList title={LANGUAGE_TRANSLATIONS[langCode].TopRated} movieList={topRatedMovies} />
+            <MovieList title={LANGUAGE_TRANSLATIONS[langCode].Upcoming} movieList={upcomingMovies} />
         </div>
     );
 }
