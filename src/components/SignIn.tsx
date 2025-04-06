@@ -1,12 +1,11 @@
 import { RefObject, useRef, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router';
+import { NavLink } from 'react-router';
 import { emailAndPhoneNumberValidator, passwordValidator } from '../utils/validate';
 import { signInWithEmailAndPassword, UserCredential } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import Header from './Header';
 
 const SignIn = () => {
-    const logo = new URL("../assets/header.png", import.meta.url).toString();
     const bg = new URL(
         "../assets/background-image.jpg",
         import.meta.url
@@ -41,7 +40,6 @@ const SignIn = () => {
         <>
             <Header />
             <div style={{ backgroundImage: `url(${bg})` }} className="h-150 px-9 pt-2 w-95/100 m-auto rounded-xl object-scale-down">
-                {/* <img className="w-45" src={logo} alt="logo" /> */}
                 <div className="text-white bg-black opacity-80 shadow-2xl w-2/6 p-12 m-auto rounded-sm">
                     <h1 className="text-4xl font-bold my-6">Sign In</h1>
                     <form onSubmit={(e) => e.preventDefault()}>
