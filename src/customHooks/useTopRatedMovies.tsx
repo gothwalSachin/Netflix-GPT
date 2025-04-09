@@ -5,18 +5,18 @@ import { useEffect } from "react";
 
 const useTopRatedMovies = () => {
     const dispatch = useDispatch();
-    const langCode = useSelector((store: any) => store.config.lang);
+    const topRated = useSelector((store: any) => store.movies.topRatedMovies);
     
     const getTopRatedMovies = async () => {
-        const data = await fetch(TOP_RATED_MOVIES_URL + langCode, API_OPTIONS);
+        const data = await fetch(TOP_RATED_MOVIES_URL, API_OPTIONS);
         const movies = await data.json();
 
         dispatch(addTopRatedMovies(movies.results));
     }
 
     useEffect(() => {
-        getTopRatedMovies();
-    }, [langCode]);
+        if(!topRated) getTopRatedMovies();
+    }, []);
 }
 
 export default useTopRatedMovies;

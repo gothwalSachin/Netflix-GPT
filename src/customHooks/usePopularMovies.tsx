@@ -5,18 +5,18 @@ import { useEffect } from "react";
 
 const usePopularMovies = () => {
     const dispatch = useDispatch();
-    const langCode = useSelector((store: any) => store.config.lang);
+    const popularMovies = useSelector((store: any) => store.movies.popularMovies);
     
     const getPopularMovies = async () => {
-        const data = await fetch(POPULAR_MOVIES_URL + langCode, API_OPTIONS);
+        const data = await fetch(POPULAR_MOVIES_URL, API_OPTIONS);
         const movies = await data.json();
 
         dispatch(addPopularMovies(movies.results));
     }
 
     useEffect(() => {
-        getPopularMovies();
-    }, [langCode]);
+        if(!popularMovies) getPopularMovies();
+    }, []);
 }
 
 export default usePopularMovies;

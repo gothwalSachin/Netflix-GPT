@@ -5,18 +5,18 @@ import { useEffect } from "react";
 
 const useUpcomingMovies = () => {
     const dispatch = useDispatch();
-    const langCode = useSelector((store: any) => store.config.lang);
+    const upcoming = useSelector((store: any) => store.movies.upcomingMovies);
     
     const getUpcomingMovies = async () => {
-        const data = await fetch(UPCOMING_MOVIES_URL + langCode, API_OPTIONS);
+        const data = await fetch(UPCOMING_MOVIES_URL, API_OPTIONS);
         const movies = await data.json();
 
         dispatch(addUpcomingMovies(movies.results));
     }
 
     useEffect(() => {
-        getUpcomingMovies();
-    }, [langCode]);
+        if(!upcoming) getUpcomingMovies();
+    }, []);
 }
 
 export default useUpcomingMovies;

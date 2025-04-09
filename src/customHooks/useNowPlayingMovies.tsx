@@ -5,18 +5,18 @@ import { useEffect } from "react";
 
 const useNowPlayingMovies = () => {
     const dispatch = useDispatch();
-    const langCode = useSelector((store: any) => store.config.lang);
+    const nowPlaying = useSelector((store: any) => store.movies.nowPlayingMovies);
     
     const getNowPlayingMoives = async () => {
-        const data = await fetch(NOW_PLAYING_MOVIES_URL + langCode, API_OPTIONS);
+        const data = await fetch(NOW_PLAYING_MOVIES_URL, API_OPTIONS);
         const movies = await data.json();
 
         dispatch(addNowPlayingMovies(movies.results));
     }
 
     useEffect(() => {
-        getNowPlayingMoives();
-    }, [langCode]);
+        if(!nowPlaying) getNowPlayingMoives();
+    }, []);
 }
 
 export default useNowPlayingMovies;
