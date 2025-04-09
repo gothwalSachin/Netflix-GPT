@@ -54,6 +54,9 @@ export const LANGUAGE_TRANSLATIONS: any = {
         NetflixIndia: 'Netflix India',
         NewToNetflix: 'New to Netflix?',
         SignUpNow: 'Sign up now.',
+        WhatToday: 'What would you like to watch today?',
+        Search: 'Search',
+        GptHomepage: 'Homepage',
     },
     [SUPPORTED_LANGUAGES[1].identifier]: {
         GptSearch: 'जीपीटी खोज',
@@ -107,6 +110,9 @@ export const LANGUAGE_TRANSLATIONS: any = {
         NetflixIndia: 'नेटफ्लिक्स इंडिया',
         NewToNetflix: 'नेटफ्लिक्स पर नए हैं?',
         SignUpNow: 'अभी साइनअप करें।',
+        WhatToday: 'आज आप क्या देखना चाहेंगे?',
+        Search: 'खोज',
+        GptHomepage: 'मुखपृष्ठ',
     },
     [SUPPORTED_LANGUAGES[2].identifier]: {
         GptSearch: 'Gpt-поиск',
@@ -161,5 +167,8 @@ export const LANGUAGE_TRANSLATIONS: any = {
         NetflixIndia: 'Netflix Индия',
         NewToNetflix: 'Впервые в Netflix?',
         SignUpNow: 'Зарегистрируйтесь сейчас.',
+        WhatToday: 'Что бы вы хотели посмотреть сегодня?',
+        Search: 'Поиск',
+        GptHomepage: 'Домашняя страница',
     },
 }

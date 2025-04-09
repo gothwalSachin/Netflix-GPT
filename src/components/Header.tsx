@@ -14,6 +14,7 @@ const Header = () => {
     const navigate = useNavigate();
     const user = useSelector((store: any) => store.user);
     const langCode = useSelector((store: any) => store.config.lang);
+    const showGptSearch = useSelector((store: any) => store.gpt.showGptSearch);
     const dispatch = useDispatch();
     const url = useLocation();
 
@@ -56,12 +57,12 @@ const Header = () => {
         >
             <img className="w-56" src={LOGO} alt="logo" />
             <div className="flex">
-                <select name="Language selection" onSubmit={(e) => e.preventDefault()} onChange={onLanguageChange} className="text-sm text-white font-semibold cursor-pointer bg-transparent border-r-8 border-transparent outline-2 outline-white focus:outline-offset-2 w-min px-2 py-1.5 rounded-full me-4 active:scale-95">
+                <select name="Language selection" onSubmit={(e) => e.preventDefault()} onChange={onLanguageChange} className="text-sm text-white font-semibold cursor-pointer bg-transparent border-r-8 border-transparent outline-2 outline-white focus:outline-offset-2 w-min px-2 py-1.5 h-8 rounded-full me-4 active:scale-95">
                     {SUPPORTED_LANGUAGES.map((lang) => <option key={lang.identifier} value={lang.identifier}>
                     {LANGUAGE_TRANSLATIONS[langCode][lang.name]}</option>)}</select>
                 {user ? (
                     <>
-                        <button className="text-sm text-black font-semibold cursor-pointer bg-white focus:outline-2 outline-white outline-offset-2 h-min px-4 py-1.5 rounded-full me-4 active:scale-95" onClick={onToggleGptSearch}>{LANGUAGE_TRANSLATIONS[langCode].GptSearch}</button>
+                        <button className="text-sm text-black font-semibold cursor-pointer bg-white focus:outline-2 outline-white outline-offset-2 h-min px-4 py-1.5 rounded-full me-4 active:scale-95" onClick={onToggleGptSearch}>{showGptSearch ? LANGUAGE_TRANSLATIONS[langCode].GptHomepage : LANGUAGE_TRANSLATIONS[langCode].GptSearch}</button>
                         <button
                             onClick={handleSignOut}
                             tabIndex={0}
