@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import GptMovieSuggestions from "./GptMovieSuggestions";
 import GptSearchBar from "./GptSearchBar";
 
@@ -9,7 +10,7 @@ const GptSearchPage = () => {
     
     return (
         <>
-            <div style={{ backgroundImage: `url(${BG_IMAGE})` }} className="h-150 bg-no-repeat px-9 pt-2 w-full m-auto object-scale-down absolute -z-10"></div>
+            <div style={{ backgroundImage: `url(${BG_IMAGE})` }} className="fixed h-full w-full object-cover m-auto -z-30"></div>
             <GptSearchBar />
             <GptMovieSuggestions />
         </>

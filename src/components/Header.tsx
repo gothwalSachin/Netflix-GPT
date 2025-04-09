@@ -62,7 +62,7 @@ const Header = () => {
                     {LANGUAGE_TRANSLATIONS[langCode][lang.name]}</option>)}</select>
                 {user ? (
                     <>
-                        <button className="text-sm text-black font-semibold cursor-pointer bg-white focus:outline-2 outline-white outline-offset-2 h-min px-4 py-1.5 rounded-full me-4 active:scale-95" onClick={onToggleGptSearch}>{showGptSearch ? LANGUAGE_TRANSLATIONS[langCode].GptHomepage : LANGUAGE_TRANSLATIONS[langCode].GptSearch}</button>
+                        <button className="text-sm text-white font-semibold cursor-pointer bg-green-900 focus:outline-2 outline-green-900 outline-offset-2 h-min px-4 py-1.5 rounded-full me-4 active:scale-95" onClick={onToggleGptSearch}>{showGptSearch ? LANGUAGE_TRANSLATIONS[langCode].GptHomepage : LANGUAGE_TRANSLATIONS[langCode].GptSearch}</button>
                         <button
                             onClick={handleSignOut}
                             tabIndex={0}
