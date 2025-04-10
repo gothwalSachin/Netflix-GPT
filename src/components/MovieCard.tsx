@@ -4,7 +4,7 @@ const MovieCard = (props: { poster: string }) => {
     if(!props.poster) return null;
 
     return (
-        <img src={IMAGE_CDN + props.poster} alt="Movie card" className="mx-1 w-40 rounded-sm" />
+        <img src={IMAGE_CDN + props.poster} alt="Movie card" className="mx-1 w-25 sm:w-30 md:w-40 rounded-sm" />
     );
 }
 

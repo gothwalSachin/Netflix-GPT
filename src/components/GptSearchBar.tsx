@@ -41,9 +41,9 @@ const GptSearchBar = () => {
 
     return (
         <>
-            <form onSubmit={(e) => e.preventDefault()} className="pt-36 pb-18 group relative flex justify-center items-start text-white" >
-                <input type="text" name="searchtext" id="searchtext" ref={searchText} className="bg-neutral-500 mr-2 rounded-full w-80 py-4 px-5 h-16 peer outline-offset-2 focus:outline-2 outline-white shadow-2xl" placeholder={LANGUAGE_TRANSLATIONS[langCode].WhatToday} />
-                <button className="bg-red-700 focus:outline-2 outline-white outline-offset-2 px-12 py-4 rounded-full text-2xl font-semibold active:scale-95 shadow-2xl" onClick={handleGptSearchClick}>{LANGUAGE_TRANSLATIONS[langCode].Search}</button>
+            <form onSubmit={(e) => e.preventDefault()} className="pt-50 sm:pt-40 pb-12 sm:pb-18 flex justify-center items-center flex-col sm:flex-row text-white" >
+                <input type="text" name="searchtext" id="searchtext" ref={searchText} className="bg-neutral-500 text-xs md:text-md mb-2 sm:mb-0 sm:mr-2 rounded-full w-60 lg:w-80 px-3 lg:px-5 h-12 lg:h-16 outline-offset-1 focus:outline-2 outline-white" placeholder={LANGUAGE_TRANSLATIONS[langCode].WhatToday} />
+                <button className="bg-red-700 focus:outline-2 outline-white outline-offset-1 w-60 lg:w-80 h-12 lg:h-16 px-12 rounded-full text-xs sm:text-md lg:text-lg font-semibold active:scale-95 shadow-2xl" onClick={handleGptSearchClick}>{LANGUAGE_TRANSLATIONS[langCode].Search}</button>
             </form>
         </>
     );

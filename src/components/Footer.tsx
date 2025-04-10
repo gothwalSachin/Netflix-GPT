@@ -6,10 +6,10 @@ const Footer = () => {
     
     return (
         <div className="bg-linear-to-t from-black p-9">
-            <div className="w-7/10 m-auto">
-                <p className="ml-2 mb-5 text-white">{LANGUAGE_TRANSLATIONS[langCode].QuestionsAndCall} <a tabIndex={0} className="hover:underline focus:underline focus:outline-0 font-bold active:scale-95" href="tel:9821738442">9821738442</a></p>
+            <div className="w-8/10 sm:w-7/10 m-auto text-sm sm:text-lg">
+                <p className="ml-2 mb-5 text-white">{LANGUAGE_TRANSLATIONS[langCode].QuestionsAndCall} <a tabIndex={0} className="hover:underline focus:underline focus:outline-0 font-semibold sm:font-bold active:scale-95" href="tel:9821738442">9821738442</a></p>
 
-                <div className="text-gray-200 grid gap-2 grid-cols-4 m-2">
+                <div className="text-gray-200 grid gap-2 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 m-2">
                     <p>{LANGUAGE_TRANSLATIONS[langCode].Faq}</p>
                     <p>{LANGUAGE_TRANSLATIONS[langCode].InvestorRelations}</p>
                     <p>{LANGUAGE_TRANSLATIONS[langCode].Privacy}</p>

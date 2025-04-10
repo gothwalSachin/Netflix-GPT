@@ -43,24 +43,18 @@ const SignIn = () => {
     return (
         <>
             <Header />
-            <div style={{ backgroundImage: `url(${BG_IMAGE})` }} className="h-150 px-9 pt-2 w-95/100 m-auto rounded-xl object-scale-down">
-                <div className="text-white bg-black opacity-80 shadow-2xl w-2/6 p-12 m-auto rounded-sm">
-                    <h1 className="text-4xl font-bold my-6">{LANGUAGE_TRANSLATIONS[langCode].SignIn}</h1>
+            <div style={{ backgroundImage: `url(${BG_IMAGE})` }} className="h-100 lg:h-150 lg:px-9 pt-4 w-95/100 m-auto rounded-xl object-scale-down">
+                <div className="text-white bg-black opacity-80 shadow-2xl w-3/4 p-4 sm:w-1/2 lg:w-2/6 lg:p-10 m-auto rounded-xl">
+                    <h1 className="text-lg lg:text-4xl font-bold mb-2 lg:mb-6">{LANGUAGE_TRANSLATIONS[langCode].SignIn}</h1>
                     <form onSubmit={(e) => e.preventDefault()}>
-                        <div className='group relative mb-3'>
-                            <input required type="email" id='email' name='email' className={'px-5 pt-4 h-16 w-full border-2 rounded-sm outline-0 peer ' + (errorMessage.length !== 0 ? 'border-red-700' : 'border-neutral-400 focus:border-white') } ref={email} />
-                            <label htmlFor="email" className='transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 group-focus-within:pt-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5 peer-valid:pt-0.5'>{LANGUAGE_TRANSLATIONS[langCode].Email}</label>
-                        </div>
-                        <div className='group relative mb-3'>
-                            <input required type="password" id='password' name='password' className={'px-5 pt-4 h-16 w-full border-2 rounded-sm outline-0 peer ' + (errorMessage.length !== 0 ? 'border-red-700' : 'border-neutral-400 focus:border-white' )} ref={password} />
-                            <label htmlFor="password" className='transform transition-all absolute pl-5 top-0 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:h-1/2 group-focus-within:-translate-y-0.5 group-focus-within:pt-0.5 peer-valid:text-xs peer-valid:h-1/2 peer-valid:-translate-y-0.5 peer-valid:pt-0.5'>{LANGUAGE_TRANSLATIONS[langCode].Password}</label>
-                        </div>
-                        <button className='p-5 h-13 w-full bg-red-700 flex items-center justify-center rounded-sm shadow-xl focus:outline-2 outline-white outline-offset-2 active:scale-95' onClick={signIn}>{LANGUAGE_TRANSLATIONS[langCode].SignIn}</button>
+                        <input required type="email" id='email' name='email' placeholder={LANGUAGE_TRANSLATIONS[langCode].Email} className={'px-2 h-12 lg:px-5 lg:h-16 text-sm mb-2 lg:text-lg w-full border-2 rounded-sm outline-0 ' + (errorMessage.length !== 0 ? 'border-red-700' : 'border-neutral-400 focus:border-white') } ref={email} />
+                        <input required type="password" id='password' name='password' placeholder={LANGUAGE_TRANSLATIONS[langCode].Password} className={'px-2 h-12 lg:px-5 lg:h-16 text-sm mb-2 lg:text-lg w-full border-2 rounded-sm outline-0 ' + (errorMessage.length !== 0 ? 'border-red-700' : 'border-neutral-400 focus:border-white' )} ref={password} />
+                        <button className='h-12 lg:h-16 w-full bg-red-700 flex items-center justify-center rounded-sm shadow-xl focus:outline-2 outline-white outline-offset-1 font-bold active:scale-95 text-sm sm:text-lg lg:text-xl' onClick={signIn}>{LANGUAGE_TRANSLATIONS[langCode].SignIn}</button>
                     </form>
 
-                    <div className={(errorMessage.length !== 0 || message.length !== 0) ? "text-white p-2 m-auto mt-4 rounded-full text-center bg-red-500" : "hidden"}>{errorMessage || message}</div>
+                    <div className={(errorMessage.length !== 0 || message.length !== 0) ? "text-white p-1 sm:p-2 m-auto mt-2 sm:mt-4 rounded-full text-center bg-red-500" : "hidden"}>{errorMessage || message}</div>
 
-                    <p className='mt-9'>{LANGUAGE_TRANSLATIONS[langCode].NewToNetflix} <NavLink to="/" tabIndex={0} className={ isActive => 'font-bold focus:outline-2 outline-white outline-offset-2 hover:underline focus:underline hover:underline-offset-2'}>{LANGUAGE_TRANSLATIONS[langCode].SignUpNow}</NavLink></p>
+                    <p className='mt-9 text-sm sm:text-lg lg:text-xl'>{LANGUAGE_TRANSLATIONS[langCode].NewToNetflix} <NavLink to="/" tabIndex={0} className={ isActive => 'font-bold focus:outline-2 outline-white outline-offset-2 hover:underline focus:underline hover:underline-offset-2'}>{LANGUAGE_TRANSLATIONS[langCode].SignUpNow}</NavLink></p>
                 </div>
             </div>
             <Footer />
