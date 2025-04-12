@@ -11,7 +11,7 @@ const SecondaryContainer = () => {
     const upcomingMovies = movies?.upcomingMovies;
 
     return (
-        <div className="relative z-30 mt-0 sm:-mt-36">
+        <div className="relative z-30 -mt-2 sm:-mt-40">
             <MovieList title={LANGUAGE_TRANSLATIONS[langCode].NowPlaying} movieList={nowPlayingMovies} />
             <MovieList title={LANGUAGE_TRANSLATIONS[langCode].Popular} movieList={popularMovies} />
             <MovieList title={LANGUAGE_TRANSLATIONS[langCode].TopRated} movieList={topRatedMovies} />

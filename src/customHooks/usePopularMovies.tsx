@@ -8,10 +8,14 @@ const usePopularMovies = () => {
     const popularMovies = useSelector((store: any) => store.movies.popularMovies);
     
     const getPopularMovies = async () => {
-        const data = await fetch(POPULAR_MOVIES_URL, API_OPTIONS);
-        const movies = await data.json();
-
-        dispatch(addPopularMovies(movies.results));
+        try {
+            const data = await fetch(POPULAR_MOVIES_URL, API_OPTIONS);
+            const movies = await data.json();
+            
+            dispatch(addPopularMovies(movies.results));
+        } catch (error) {
+            console.log('Error', error);
+        }
     }
 
     useEffect(() => {

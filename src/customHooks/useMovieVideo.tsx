@@ -8,12 +8,16 @@ const useMovieVideo = (movieId: string) => {
     const trailerVideo = useSelector((store: any) => store.movies.trailerVideo);
 
     const getMovieVideos = async () => {
-        const data = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos`, API_OPTIONS);
-        const json = await data.json();
+        try {
+            const data = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos`, API_OPTIONS);
+            const json = await data.json();
+            const filterData = json?.results?.filter((video: any) => video.type === "Trailer");
+            const trailer = filterData?.[0];
+            dispatch((addTrailerVideo(trailer)));
+        } catch (error) {
+            console.log('Error', error);
+        }
 
-        const filterData = json?.results?.filter((video: any) => video.type === "Trailer");
-        const trailer = filterData?.[0];
-        dispatch((addTrailerVideo(trailer)));
     }
 
     useEffect(() => {

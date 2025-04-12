@@ -8,10 +8,14 @@ const useUpcomingMovies = () => {
     const upcoming = useSelector((store: any) => store.movies.upcomingMovies);
     
     const getUpcomingMovies = async () => {
-        const data = await fetch(UPCOMING_MOVIES_URL, API_OPTIONS);
-        const movies = await data.json();
-
-        dispatch(addUpcomingMovies(movies.results));
+        try {
+            const data = await fetch(UPCOMING_MOVIES_URL, API_OPTIONS);
+            const movies = await data.json();
+            
+            dispatch(addUpcomingMovies(movies.results));
+        } catch (error) {
+            console.log('Error', error);
+        }
     }
 
     useEffect(() => {

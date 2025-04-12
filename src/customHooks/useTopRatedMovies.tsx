@@ -8,10 +8,14 @@ const useTopRatedMovies = () => {
     const topRated = useSelector((store: any) => store.movies.topRatedMovies);
     
     const getTopRatedMovies = async () => {
-        const data = await fetch(TOP_RATED_MOVIES_URL, API_OPTIONS);
-        const movies = await data.json();
-
-        dispatch(addTopRatedMovies(movies.results));
+        try {
+            const data = await fetch(TOP_RATED_MOVIES_URL, API_OPTIONS);
+            const movies = await data.json();
+            
+            dispatch(addTopRatedMovies(movies.results));
+        } catch (error) {
+            console.log('Error', error);
+        }
     }
 
     useEffect(() => {

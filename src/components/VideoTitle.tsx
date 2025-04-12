@@ -5,7 +5,7 @@ const VideoTitle = (props: {title: string, overview: string}) => {
     const langCode = useSelector((store: any) => store.config.lang);
     
     return (
-        <div className="px-5 lg:px-12 text-white absolute w-full aspect-video sm:bg-gradient-to-r from-black pt-28 sm:pt-45 lg:pt-50 mb-24 lg:mb-4">
+        <div className="px-5 lg:px-12 text-white absolute w-full aspect-video sm:bg-gradient-to-r from-black pt-34 sm:pt-45 lg:pt-50 mb-24 lg:mb-4">
             <h1 className="text-base sm:text-lg md:text-4xl font-bold mb-1 sm:m-5">{props.title}</h1>
             <p className="hidden lg:inline-block w-1/3 mx-5 my-7 text-base leading-6">{props.overview}</p>
 

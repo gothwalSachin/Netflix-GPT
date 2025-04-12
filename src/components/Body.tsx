@@ -13,7 +13,8 @@ const Body = () => {
         },
         {
             path: '/browse',
-            Component: Browse
+            Component: Browse,
+            ErrorBoundary: Error
         },
         {
             path: '/login',
