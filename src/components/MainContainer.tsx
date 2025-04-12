@@ -4,14 +4,14 @@ import VideoBackground from "./VideoBackground";
 
 const MainContainer = () => {
     const movies = useSelector((store: any) => store.movies?.nowPlayingMovies);
-    if(movies === null) return;
+    if (movies === null) return <div className="animate-pulse"><div className="h-100 bg-gray-200 dark:bg-gray-700"></div></div>;
 
     const mainMovie = movies[0];
 
     const { original_title, overview, id } = mainMovie;
 
     return (
-        <div className="pt-40 sm:pt-45 lg:pt-0 mb-24 lg:mb-4">
+        <div className="pt-36 sm:pt-24 lg:pt-0 mb-24 lg:mb-4">
             <VideoTitle title={original_title} overview={overview} />
             <VideoBackground movieId={id} />
         </div>
